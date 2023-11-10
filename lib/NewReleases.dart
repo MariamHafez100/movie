@@ -14,6 +14,13 @@ class NewReleaseScreen extends StatelessWidget{
       child: FutureBuilder<GetNewRelease>(
         future:ApiManager.getNewRealesa(),
         builder: (context, snapshot) {
+          if(snapshot.connectionState==ConnectionState.waiting){
+            return
+              Center(
+                child: CircularProgressIndicator(
+                ),
+              );
+          }
           return  Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

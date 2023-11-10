@@ -14,6 +14,13 @@ class Recomended extends StatelessWidget{
       child: FutureBuilder<GetTopRelated>(
         future: ApiManager.getTopRelated(),
         builder: (context, snapshot) {
+          if(snapshot.connectionState==ConnectionState.waiting){
+            return
+                   Center(
+                    child: CircularProgressIndicator(
+                    ),
+                  );
+          }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -98,7 +105,7 @@ class Recomended extends StatelessWidget{
                       ),
                     );
                   },
-                  itemCount: 8,
+                  itemCount: snapshot.data!.results!.length,
                   scrollDirection: Axis.horizontal,
                 ),
               ),
