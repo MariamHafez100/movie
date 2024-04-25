@@ -76,7 +76,7 @@ List<Widget> screens = [
   anasScreen(),
   SearchScreen(),
   CategoryList(),
-  screen()
+  WatchListScreen()
 ];
 
 
